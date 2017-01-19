@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="../assets/css/common.css">
+  <script src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+  <h1>set</h1>
+  <div id="app">
+    <ul>
+      <li v-for="task in tasks">
+        {{ task.name }} - {{ task.count }}
+      </li>
+    </ul>
+    <p>{{count}}</p>
+    <button @click="add">+</button>
+    <button @click="clean">clean</button>
+  </div>
+
+  <button onclick="add()">add</button>
+  <script>
+    function add() {
+      //   Vue.set(taskList, 'count', 4);
+      app.count++;
+      taskList.count++;
+      taskList.tasks.push({
+        name: 'task2',
+        count: 1
+      });
+    }
+    var taskList = {
+      count: 3,
+      tasks: [{
+        name: 'task1',
+        count: 1
+      }, {
+        name: 'task2',
+        count: 2
+      }, ]
+    };
+    var app = new Vue({
+      el: '#app',
+      data: taskList,
+      methods: {
+        add: function() {
+          this.count++;
+          this.tasks.push({
+            name: 'task3',
+            count: 1
+          });
+        },
+        clean: function() {
+          this.count = 0;
+          this.tasks = [];
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

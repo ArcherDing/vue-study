@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="../assets/css/common.css">
+  <script src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+  <h1>v-on</h1>
+  <div id="app">
+    <div>{{number}}</div>
+    <button v-on:click="add">+1</button>
+    <button @click="inc">-1</button>
+    <input type="text" v-model.number="number2" @keyup.enter="enter">
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        number: 0,
+        number2: 0
+      },
+      methods: {
+        add: function() {
+          this.number++;
+        },
+        inc: function() {
+          this.number--;
+        },
+        enter: function() {
+          this.number += this.number2;
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

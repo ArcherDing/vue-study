@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="../assets/css/common.css">
+  <script src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+  <h1>directive</h1>
+  <div id="app">
+    <input type="text" v-focus>
+    <div>{{message}}</div>
+    <img v-bind2:src="imageSrc" v-bind2:width="width">
+    <button @click="large">+</button>
+  </div>
+  <button onclick="destroy()">destroy</button>
+  <script>
+    function destroy() {
+      app.$destroy('#app');
+    }
+
+    Vue.directive('focus', {
+      inserted: function(el) {
+        el.focus();
+      }
+    });
+
+    Vue.directive('bind2', {
+      bind: function(el, binding) {
+        console.log('bind');
+        el[binding.arg] = binding.value;
+      },
+      inserted: function() {
+        console.log('inserted');
+      },
+      update: function(el, binding) {
+        el[binding.arg] = binding.value;
+        console.log('update');
+      },
+      componentUpdated: function() {
+        console.log('componentUpdated');
+      },
+      unbind: function() {
+        console.log('unbind');
+      }
+    });
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: 'hello vue!',
+        imageSrc: 'https://cn.vuejs.org/images/logo.png',
+        width: 40
+      },
+      methods: {
+        large: function() {
+          this.width = this.width * 2;
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

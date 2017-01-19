@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="../assets/css/common.css">
+  <script src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+  <h1>v-for</h1>
+  <div id="app">
+    <ul>
+      <li v-for="number in _numbers">{{number}}</li>
+    </ul>
+
+    <ul>
+      <li v-for="(person, index) in _persons">
+        {{index}}. {{person.name}} - {{person.age}}
+      </li>
+    </ul>
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        numbers: [12, 54, 5, 45, 78, 28],
+        persons: [{
+          name: '张三',
+          age: 20
+        }, {
+          name: '李四',
+          age: 10
+        }, {
+          name: '王五',
+          age: 30
+        }, {
+          name: '赵六',
+          age: 9
+        }]
+      },
+      computed: {
+        _numbers: function() {
+          return this.numbers.sort(function(x, y) {
+            return x - y;
+          });
+        },
+        _persons: function() {
+          return this.persons.sort(function(x, y) {
+            return x.age - y.age;
+          });
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

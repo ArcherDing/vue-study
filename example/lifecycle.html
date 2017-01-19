@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="../assets/css/common.css">
+  <script src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+  <h1>lifecycle</h1>
+  <div id="app">
+    <div>{{message}}</div>
+    <button @click="tryUpdate">update</button>
+  </div>
+  <button onclick="destroy()">destroy</button>
+  <script>
+    function destroy() {
+      app.$destroy();
+    }
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: 'hello vue!'
+      },
+      methods: {
+        tryUpdate: function() {
+          this.message = 'try updated';
+        }
+      },
+      beforeCreate: function() {
+        console.log('1. beforeCreate');
+      },
+      created: function() {
+        console.log('2. created');
+      },
+      beforeMount: function() {
+        console.log('3. beforeMount');
+      },
+      mounted: function() {
+        console.log('4. mounted');
+      },
+      beforeUpdate: function() {
+        console.log('5. beforeUpdate');
+      },
+      updated: function() {
+        console.log('6. updated');
+      },
+      actived: function() {
+        console.log('7. actived');
+      },
+      deactived: function() {
+        console.log('8. deactived');
+      },
+      beforeDestroy: function() {
+        console.log('9. beforeDestroy');
+      },
+      destroyed: function() {
+        console.log('10. destroyed');
+      }
+    });
+  </script>
+</body>
+
+</html>

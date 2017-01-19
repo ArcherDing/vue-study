@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="../assets/css/common.css">
+  <script src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+  <h1>v-bind</h1>
+  <div id="app">
+    <div v-bind:class="'active'">1. 使用字符串指定class</div>
+    <div :class="['active','large']">2. 使用字符串数组指定多个class</div>
+    <div :class="{'active':isActive}">3. 使用bool值控制字符串class</div>
+    <div :class="{active:isActive, large:true}">4. 使用bool值控制class</div>
+    <div :class="[dActive,'large']">5. 使用数组指定多个class</div>
+    <div :class="[dActive,isLarge?'large':'small']">6. 使用三元表达式控制指定多个class</div>
+  </div>
+  <style>
+    .active {
+      color: red;
+    }
+    
+    .large {
+      font-size: 40pt;
+    }
+    
+    .small {
+      font-size: 12pt;
+    }
+  </style>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        dActive: 'active',
+        isActive: true,
+        isLarge: false
+      }
+    });
+  </script>
+</body>
+
+</html>

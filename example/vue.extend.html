@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="../assets/css/common.css">
+  <script src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+  <h1>extend</h1>
+  <div id="app">
+    <div id="header"></div>
+    <div id="footer"></div>
+  </div>
+  <script>
+    var header = Vue.extend({
+      template: '<p>{{message}}</p>',
+      data: function() {
+        return {
+          message: 'This is header'
+        };
+      }
+    });
+
+    var footer = Vue.extend({
+      template: '<p>{{message}}</p>',
+      data: function() {
+        return {
+          message: 'This is footer'
+        };
+      }
+    });
+
+    new header().$mount('#header');
+    new footer().$mount('#footer');
+  </script>
+</body>
+
+</html>

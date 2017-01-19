@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="../assets/css/common.css">
+  <script src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+  <h1>v-if v-else v-show</h1>
+  <div id="app">
+    <div v-if="shown">{{load}}</div>
+    <div v-else>{{unload}}</div>
+    <button @click="toggle">{{ shown? "unload":"load" }}</button>
+
+    <div v-show="shown">{{show}}</div>
+    <div v-else>{{unshow}}</div>
+
+    <div v-if="type==0">{{status[0]}}</div>
+    <template v-else>
+        <div v-if="type==1">{{status[1]}}</div>
+        <div v-else>{{status[2]}}</div>
+    </template>
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        shown: true,
+        load: 'v-if load',
+        unload: 'v-else unload',
+        show: 'v-show show',
+        unshow: 'v-else unshow',
+        type: 0,
+        status: ['A', 'B', 'C']
+      },
+      methods: {
+        toggle: function() {
+          this.shown = !this.shown;
+        },
+      }
+    });
+  </script>
+</body>
+
+</html>
