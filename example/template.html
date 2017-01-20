@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="../assets/css/common.css">
+  <script src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+  <h1>模版写法</h1>
+  <div id="app">
+    <h1>模版1：直接写入构造内</h1>
+  </div>
+  <template id="template3">
+      <h1>模版3：写入template标签内</h1>
+  </template>
+  <script type="x-template" id="template4">
+    <h1>模版4：写入script标签内</h1>
+  </script>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      template: '#template4'
+        //   template: '#template3'
+        //   template: `
+        //   <h1>模版2：直接写入构造器的template</h1>
+        //   `
+    });
+  </script>
+</body>
+
+</html>
