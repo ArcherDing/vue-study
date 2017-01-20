@@ -14,6 +14,8 @@
     <div>{{message}}</div>
     <hello></hello>
     <world></world>
+    <parent></parent>
+    <component :is="who"></component>
   </div>
   <script>
     Vue.component('hello', {
@@ -24,6 +26,7 @@
     var app = new Vue({
       el: '#app',
       data: {
+        who: 'world',
         message: 'hello vue!'
       },
       components: {
@@ -31,6 +34,26 @@
           template: `
               <div>2. 局部componet</div>
               `
+        },
+        "parent": {
+          template: `
+            <div>
+            <div>parent</div>
+            <child></child>
+            </div>
+            `,
+          components: {
+            "child": {
+              template: `
+                    <div>child {{ count }}</div>
+                    `,
+              data: function() {
+                return {
+                  count: 2
+                };
+              }
+            }
+          }
         }
       }
     });
